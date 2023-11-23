@@ -106,9 +106,6 @@ jobs:
       - name: Build
         run: ./gradlew imgui-binding:generateLibs -Denvs=${{ matrix.type }} -Dfreetype=${{ matrix.freetype }}
 
-      - name: List Built Files
-        run: find /tmp/imgui/libsNative
-
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
