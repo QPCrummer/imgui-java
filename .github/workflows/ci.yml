@@ -56,6 +56,8 @@ jobs:
             type: windows
           - os: macos-latest
             type: linux
+          - os: macos-latest
+            type: linuxarm64
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repository and Submodules
@@ -77,14 +79,6 @@ jobs:
       - name: Install MinGW-w64/GCC/G++ (Linux & Windows)
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt install mingw-w64
-
-      - name: Install aarch64 toolchain (Linux Arm 64)
-        if: matrix.os == 'ubuntu-latest' && matrix.type == 'linuxarm64'
-        run: sudo apt-get install g++-aarch64-linux-gnu
-
-      - name: Update PATH for aarch64 toolchain (Linux Arm 64)
-        if: matrix.os == 'ubuntu-latest' && matrix.type == 'linuxarm64'
-        run: export PATH=$PATH:/usr/aarch64-linux-gnu/bin
 
       - name: FreeType - Install (Linux)
         if: matrix.os == 'ubuntu-latest' && matrix.type == 'linux' && matrix.freetype == true
