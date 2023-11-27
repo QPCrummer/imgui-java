@@ -47,6 +47,7 @@ jar {
 }
 
 shadowJar {
+    classifier("")
     with jar
 }
 

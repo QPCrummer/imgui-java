@@ -1,5 +1,9 @@
 import java.text.SimpleDateFormat
 
+plugins {
+    id 'java'
+}
+
 ext {
     lwjglVersion = '3.3.3'
 }
@@ -44,4 +48,8 @@ tasks.register('buildAll') { t ->
             t.dependsOn ":imgui-$module:$task"
         }
     }
+}
+
+build {
+    dependsOn(buildAll)
 }
