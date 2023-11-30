@@ -22,7 +22,7 @@ class GenerateLibs extends DefaultTask {
     private final boolean forLinuxArm32 = buildEnvs?.contains('linuxarm32')
     private final boolean forMac = buildEnvs?.contains('macos')
     private final boolean forMacArm64 = buildEnvs?.contains('macosarm64')
-    private static final boolean isARM = System.getProperty("os.arch").equals("arm") || System.getProperty("os.arch").startsWith("aarch64");
+    private static final boolean isARM = System.getProperty("os.arch").contains("arm") || System.getProperty("os.arch").contains("aarch")
 
     private final boolean isLocal = System.properties.containsKey('local')
     private final boolean withFreeType = Boolean.valueOf(System.properties.getProperty('freetype', 'false'))
