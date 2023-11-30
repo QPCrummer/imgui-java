@@ -27,7 +27,7 @@ switch (findProperty('deployType')) {
         packageName = 'imgui-java-natives-linux'
         packageDesc = 'Native binaries for imgui-java binding for Linux'
         moduleName = 'imgui.natives.linux'
-        libNames = ['libimgui-java64.so', 'libimgui-javaarm64.so']
+        libNames = ['libimgui-java64.so', 'libimgui-javaarm64.so', 'libimgui-javaarm32.so']
         break
     case 'macos':
         packageName = 'imgui-java-natives-macos'

@@ -19,6 +19,7 @@ class GenerateLibs extends DefaultTask {
     private final boolean forWindows = buildEnvs?.contains('windows')
     private final boolean forLinux = buildEnvs?.contains('linux')
     private final boolean forLinuxArm64 = buildEnvs?.contains('linuxarm64')
+    private final boolean forLinuxArm32 = buildEnvs?.contains('linuxarm32')
     private final boolean forMac = buildEnvs?.contains('macos')
     private final boolean forMacArm64 = buildEnvs?.contains('macosarm64')
     private static final boolean isARM = System.getProperty("os.arch").equals("arm") || System.getProperty("os.arch").startsWith("aarch64");
@@ -104,6 +105,12 @@ class GenerateLibs extends DefaultTask {
             buildTargets += linuxArm64
         }
 
+        if (forLinuxArm32) {
+            def linuxArm32 = BuildTarget.newDefaultTarget(BuildTarget.TargetOs.Linux, false, true)
+            addFreeTypeIfEnabled(linuxArm32)
+            buildTargets += linuxArm32
+        }
+
         if (forMac) {
             def minMacOsVersion = '10.15'
             def mac64 = BuildTarget.newDefaultTarget(BuildTarget.TargetOs.MacOsX, true)
@@ -137,6 +144,8 @@ class GenerateLibs extends DefaultTask {
             BuildExecutor.executeAnt(jniDir + '/build-linux64.xml', commonParams)
         if (forLinuxArm64)
             BuildExecutor.executeAnt(jniDir + '/build-linuxarm64.xml', commonParams)
+        if (forLinuxArm32)
+            BuildExecutor.executeAnt(jniDir + '/build-linuxarm32.xml', commonParams)
         if (forMac)
             BuildExecutor.executeAnt(jniDir + '/build-macosx64.xml', commonParams)
         if (forMacArm64)

@@ -19,7 +19,7 @@ dependencies {
     api 'org.lwjgl:lwjgl-glfw'
     api 'org.lwjgl:lwjgl-opengl'
 
-    ['natives-linux', 'natives-linux-arm64', 'natives-windows', 'natives-macos', 'natives-macos-arm64'].each {
+    ['natives-linux', 'natives-linux-arm64', 'natives-linux-arm32', 'natives-windows', 'natives-macos', 'natives-macos-arm64'].each {
         api "org.lwjgl:lwjgl::$it"
         api "org.lwjgl:lwjgl-glfw::$it"
         api "org.lwjgl:lwjgl-opengl::$it"
@@ -35,6 +35,7 @@ jar {
         include 'libimgui-javaarm64.so'
         include 'libimgui-java64.dylib'
         include 'libimgui-javaarm64.dylib'
+        include 'libimgui-javaarm32.dylib'
         into 'io/imgui/java/native-bin/'
     }
     from('../bin/freetype') {
