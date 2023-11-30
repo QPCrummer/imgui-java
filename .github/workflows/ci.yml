@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, macos-latest ]
-        type: [ windows, linux, linuxarm64, linuxarm32, macos, macosarm64]
+        type: [ windows, linux, linuxarm64, linuxarm, macos, macosarm64]
         freetype: [ true, false ]
         include:
           - type: windows
@@ -43,8 +43,8 @@ jobs:
             expected: /tmp/imgui/libsNative/linux64/libimgui-java64.so
           - type: linuxarm64
             expected: /tmp/imgui/libsNative/linuxarm64/libimgui-javaarm64.so
-          - type: linuxarm32
-            expected: /tmp/imgui/libsNative/linuxarm32/libimgui-javaarm32.so
+          - type: linuxarm
+            expected: /tmp/imgui/libsNative/linuxarm/libimgui-javaarm.so
           - type: macos
             expected: /tmp/imgui/libsNative/macosx64/libimgui-java64.dylib
           - type: macosarm64
@@ -61,7 +61,7 @@ jobs:
           - os: macos-latest
             type: linuxarm64
           - os: macos-latest
-            type: linuxarm32
+            type: linuxarm
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Repository and Submodules
@@ -88,9 +88,9 @@ jobs:
         if: matrix.os == 'ubuntu-latest' && matrix.type == 'linuxarm64'
         run: sudo apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
-      - name: Install arm-linux-gnueabihf-gcc (Linux Arm32)
-        if: matrix.os == 'ubuntu-latest' && matrix.type == 'linuxarm32'
-        run: sudo apt install gcc-arm-linux-gnueabi g++-arm-linux-gnueabihf
+      - name: Install arm-none-eabi-gcc (Linux Arm32)
+        if: matrix.os == 'ubuntu-latest' && matrix.type == 'linuxarm'
+        run: sudo apt install gcc-arm-none-eabi arm-none-eabi-g++
 
       - name: FreeType - Install (Linux)
         if: matrix.os == 'ubuntu-latest' && matrix.type == 'linux' && matrix.freetype == true
