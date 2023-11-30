@@ -90,7 +90,7 @@ jobs:
 
       - name: Install arm-none-eabi-gcc (Linux Arm32)
         if: matrix.os == 'ubuntu-latest' && matrix.type == 'linuxarm'
-        run: sudo apt install gcc-arm-none-eabi arm-none-eabi-g++
+        run: sudo apt install gcc-arm-linux-gnueabi g++-arm-linux-gnueabihf
 
       - name: FreeType - Install (Linux)
         if: matrix.os == 'ubuntu-latest' && matrix.type == 'linux' && matrix.freetype == true
