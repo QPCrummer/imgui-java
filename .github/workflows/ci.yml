@@ -133,7 +133,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.freetype && 'native-libraries-with-freetype' || 'native-libraries' }}
-          if-no-files-found: error
           path: ${{ matrix.expected }}
 
   update-bin:
