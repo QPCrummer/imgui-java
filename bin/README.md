@@ -10,6 +10,7 @@ You can change that by using `imgui.library.name` VM option (ex: `-Dimgui.librar
 |---------|-------------------------|
 | Windows | imgui-java64.dll        |
 | Linux   | libimgui-java64.so      |
+| Linux   | libimgui-javaarm.so     |
 | Linux   | libimgui-javaarm64.so   |
 | macOS   | libimgui-java64.dylib   |
 | macOS   | libimgui-javaarm64.dylib|

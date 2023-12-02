@@ -33,7 +33,7 @@ jar {
     from('../bin') {
         include 'libimgui-java64.so'
         include 'libimgui-javaarm64.so'
-        include 'libimgui-javaarm32.so'
+        include 'libimgui-javaarm.so'
         include 'libimgui-java64.dylib'
         include 'libimgui-javaarm64.dylib'
         into 'io/imgui/java/native-bin/'
